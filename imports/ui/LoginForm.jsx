@@ -5,14 +5,31 @@ export const LoginForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const submit = e => {
+  const submitLogin = e => {
     e.preventDefault();
 
-    Meteor.loginWithPassword(username, password);
+    Meteor.loginWithPassword(username, password, error => {
+      if(error)
+        alert(error.message);
+    });
+  };
+
+  const submitSignup = e => {
+    e.preventDefault();
+
+    Meteor.call('users.insert', username, password, error => {
+      if(error)
+        alert(error.message);
+      else
+        Meteor.loginWithPassword(username, password, error => {
+          if(error)
+            alert(error.message);
+        });
+    });
   };
 
   return (
-    <form onSubmit={submit} className="login-form">
+    <form className="login-form">
       <div>
         <label htmlFor="username">Username</label>
         <input
@@ -36,7 +53,8 @@ export const LoginForm = () => {
         />
       </div>
       <div>
-        <button type="submit">Log In</button>
+        <button type="submit" onClick={submitLogin}>Log In</button>
+        <button type="submit" onClick={submitSignup}>Sign Up</button>
       </div>
     </form>
   );
