@@ -25,3 +25,4 @@ quave:testing
 dev-error-overlay@0.1.1
 accounts-github
 service-configuration
+communitypackages:react-router-ssr
