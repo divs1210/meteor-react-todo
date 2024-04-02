@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Navbar } from './Navbar';
 import { Tasks } from './Tasks';
 import { Login } from './Login';
+import { Profile } from './Profile';
+import { Routes, Route } from "react-router-dom";
 import { useTracker } from 'meteor/react-meteor-data';
 import { TasksCollection } from '/imports/db/TasksCollection';
 
@@ -34,12 +36,19 @@ export const Base = ({user}) => {
   return (
       <div className="app">
         <Navbar user={user} pendingTasksCount={pendingTasksCount} />
-        {user? 
-          <Tasks 
-            tasks={tasks} 
-            isLoading={isLoading}
-            hideCompleted={hideCompleted}
-            setHideCompleted={setHideCompleted} /> 
+        {user?
+          <Routes>
+            <Route exact path="/" element={
+              <Tasks 
+                tasks={tasks} 
+                isLoading={isLoading}
+                hideCompleted={hideCompleted}
+                setHideCompleted={setHideCompleted} />
+            } />
+            <Route path="/users/:userId" element={
+              <Profile user={user} />
+            } />
+          </Routes> 
           : <Login />}
       </div>
   );
