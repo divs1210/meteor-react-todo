@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from "react-helmet";
 import { Task } from './Task';
 import { TaskForm } from './TaskForm';
 import { Meteor } from 'meteor/meteor';
@@ -12,6 +13,10 @@ const deleteTask = ({ _id }) =>
 export const Tasks = ({tasks, isLoading, hideCompleted, setHideCompleted}) => {
   return (
     <div className="main">
+        <Helmet>
+          <title>Tasks</title> 
+        </Helmet>
+          
         <TaskForm />
 
         <div className="filter">

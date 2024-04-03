@@ -1,4 +1,5 @@
 import { Meteor } from 'meteor/meteor';
+import { Helmet } from "react-helmet";
 import React, { useState } from 'react';
 
 export const Login = () => {
@@ -30,6 +31,10 @@ export const Login = () => {
 
   return (
     <div className='main'>
+        <Helmet>
+          <title>Log In / Sign Up</title> 
+        </Helmet>
+
         <form className="login-form">
         <div>
           <label htmlFor="username">Username</label>
