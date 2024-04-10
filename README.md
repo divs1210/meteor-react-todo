@@ -3,6 +3,8 @@
 Full-stack reactive webdev starter template.
 
 ## Includes:
+
+- TypeScript
 - user authentication
 - server side rendering
 - client side routing
