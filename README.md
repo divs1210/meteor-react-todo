@@ -14,6 +14,7 @@ Meteor requires `node 14`, which can be installed via [nvm](https://github.com/n
 ```
 $ nvm install 14
 $ nvm use 14
+$ meteor npm install
 ```
 
 ## Run
